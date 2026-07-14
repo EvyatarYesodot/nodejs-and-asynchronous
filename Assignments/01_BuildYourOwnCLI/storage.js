@@ -1,9 +1,17 @@
+import fs from "fs";
+
 const saveTasks = (tasks) => {
-    // Store the given task array into a tasks.json file.
+    const data = JSON.stringify(tasks);
+    fs.writeFileSync("tasks.json", data, "utf8");
 };
 
 const loadTasks = () => {
-    // Retrieve an array of tasks from the tasks.json file.
+    try {
+        const data = fs.readFileSync("tasks.json", "utf8");
+        return JSON.parse(data);
+    } catch (error) {
+        console.log("Error reading file: tasks.json", error);
+    }
 };
 
 export { loadTasks, saveTasks };
