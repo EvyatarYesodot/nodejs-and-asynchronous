@@ -6,12 +6,12 @@ const saveTasks = (tasks) => {
 };
 
 const loadTasks = () => {
-    try {
-        const data = fs.readFileSync("tasks.json", "utf8");
-        return JSON.parse(data);
-    } catch (error) {
-        console.log("Error reading file: tasks.json", error);
+    let data = fs.readFileSync("tasks.json", "utf8");
+    if (!data) {
+        console.log(`if`);
+        data = "[]";
     }
+    return JSON.parse(data);
 };
 
 export { loadTasks, saveTasks };
