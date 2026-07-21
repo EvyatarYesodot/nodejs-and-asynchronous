@@ -1,0 +1,17 @@
+{
+  "name": "01_buildyourowncli",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "todo-app": "node index.js"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.3"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "inquirer": "^14.0.2",
+    "uuid": "^14.0.1"
+  }
+}
