@@ -19,7 +19,7 @@ const getReader = async (id) => {
     })
 };
 
-async function getRecommendedBooks(id) {
+const getRecommendedBooks = async (id) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(recommendedBooks[id])
@@ -27,7 +27,7 @@ async function getRecommendedBooks(id) {
     })
 }
 
-async function reserveBooks(email, books) {
+const reserveBooks = (email, books) => {
     console.log(`Reserving books ${books} for ${email}...`);
     return new Promise((resolve) => {
         setTimeout(() => {
