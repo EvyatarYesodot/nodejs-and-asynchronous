@@ -16,12 +16,8 @@ const delayedRejection = (ms) => {
 
 const handlePromises1 = (promise1) => {
     return promise1
-        .then((data) => {
-            return data;
-        })
-        .catch((err) => {
-            return `ERROR: ${err}`;
-        });
+    .then((data) => data)
+    .catch((err) => `ERROR: ${err}`);
 };
 
 const handlePromises2 = async (promise1) => {
@@ -34,17 +30,13 @@ const handlePromises2 = async (promise1) => {
 
 const racePromises = async (ms1, ms2) => {
     return Promise.race([delayedResolution(ms1), delayedRejection(ms2)])
-        .then((value) => {
-            return value;
-        })
-        .catch((err) => {
-            return `ERROR: ${err}`;
-        });
+        .then((value) => value)
+        .catch((err) => `ERROR: ${err}`);
 };
 
-const handleMultiplePromises = async (promisesArr) => {
+const handleMultiplePromises = (promisesArr) => {
     const message = { resolved: 0, rejected: 0 };
-    return Promise.allSettled(promisesArr).then((results) => {
+    Promise.allSettled(promisesArr).then((results) => {
         results.forEach((result) => {
             if (result.status === "fulfilled") {
                 message.resolved += 1;
@@ -53,18 +45,14 @@ const handleMultiplePromises = async (promisesArr) => {
                 message.rejected += 1;
             }
         });
-        return message;
     });
+    return message;
 };
 
 const handleMultipleResolutions = async (promisesArr) => {
     return Promise.all(promisesArr)
-        .then((results) => {
-            return `All promises resolved`;
-        })
-        .catch((err) => {
-            return `ERROR: At least one promise rejected`;
-        });
+        .then((results) => `All promises resolved`)
+        .catch((err) => `ERROR: At least one promise rejected`);
 };
 
 export {
