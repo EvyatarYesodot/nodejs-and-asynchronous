@@ -23,7 +23,7 @@ const createTask = async (title, description) => {
 };
 
 const getTasks = async () => {
-    return await loadTasks();
+    return loadTasks();
 };
 
 const getTask = async (id) => {
