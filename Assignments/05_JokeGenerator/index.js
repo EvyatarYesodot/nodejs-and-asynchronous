@@ -1,9 +1,7 @@
-import { config } from "dotenv";
+import "dotenv/config";
 import env from "env-var";
 import oneLinerJoke from "one-liner-joke";
 import fs from "fs/promises";
-
-config();
 
 const getConfig = () => {
     return {
