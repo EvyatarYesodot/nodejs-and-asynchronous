@@ -10,13 +10,6 @@ const createTask = (title, description) => {
         status: "not done",
     };
     const tasks = loadTasks();
-
-    if (!Array.isArray(tasks)) {
-        const arrTasks = [tasks];
-        arrTasks.push(newTask);
-        saveTasks(arrTasks);
-        return;
-    }
     tasks.push(newTask);
     saveTasks(tasks);
 };
@@ -37,7 +30,7 @@ const getTask = (id) => {
 
 const updateTask = (id, title, description) => {
     const tasks = loadTasks();
-    const index = indexTask(id);
+    const index = indexTask(id, tasks);
     if (!index) {
         return;
     }
@@ -48,7 +41,7 @@ const updateTask = (id, title, description) => {
 
 const deleteTask = (id) => {
     const tasks = loadTasks();
-    const index = indexTask(id);
+    const index = indexTask(id, tasks);
     if (!index) {
         return;
     }
@@ -58,7 +51,7 @@ const deleteTask = (id) => {
 
 const markTaskAsDone = (id) => {
     const tasks = loadTasks();
-    const index = indexTask(id);
+    const index = indexTask(id, tasks);
     if (!index) {
         return;
     }
@@ -68,7 +61,7 @@ const markTaskAsDone = (id) => {
 
 const markTaskAsNotDone = (id) => {
     const tasks = loadTasks();
-    const index = indexTask(id);
+    const index = indexTask(id, tasks);
     if (!index) {
         return;
     }

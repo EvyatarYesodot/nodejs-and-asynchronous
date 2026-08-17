@@ -8,7 +8,6 @@ const saveTasks = (tasks) => {
 const loadTasks = () => {
     let data = fs.readFileSync("tasks.json", "utf8");
     if (!data) {
-        console.log(`if`);
         data = "[]";
     }
     return JSON.parse(data);
