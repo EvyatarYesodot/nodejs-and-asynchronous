@@ -45,7 +45,7 @@ const deleteTask = (id) => {
     if (index === undefined) {
         return;
     }
-    tasks.splice(index);
+    tasks.splice(index, 1);
     saveTasks(tasks);
 };
 
