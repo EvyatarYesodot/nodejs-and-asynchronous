@@ -31,7 +31,7 @@ const getTask = (id) => {
 const updateTask = (id, title, description) => {
     const tasks = loadTasks();
     const index = indexTask(id, tasks);
-    if (!index) {
+    if (index === undefined) {
         return;
     }
     tasks[index].title = title;
@@ -42,7 +42,7 @@ const updateTask = (id, title, description) => {
 const deleteTask = (id) => {
     const tasks = loadTasks();
     const index = indexTask(id, tasks);
-    if (!index) {
+    if (index === undefined) {
         return;
     }
     tasks.splice(index);
@@ -52,7 +52,7 @@ const deleteTask = (id) => {
 const markTaskAsDone = (id) => {
     const tasks = loadTasks();
     const index = indexTask(id, tasks);
-    if (!index) {
+    if (index === undefined) {
         return;
     }
     tasks[index].status = "done";
@@ -62,7 +62,7 @@ const markTaskAsDone = (id) => {
 const markTaskAsNotDone = (id) => {
     const tasks = loadTasks();
     const index = indexTask(id, tasks);
-    if (!index) {
+    if (index === undefined) {
         return;
     }
     tasks[index].status = "not done";
