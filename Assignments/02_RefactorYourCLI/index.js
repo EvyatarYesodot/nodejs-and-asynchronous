@@ -32,89 +32,101 @@ export const main = async () => {
 
     switch (choiceMenu.chooseAction) {
         case choices.createNewTask:
-            const createData = await inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "title",
-                        message: "title task: ",
-                    },
-                    {
-                        type: "input",
-                        name: "description",
-                        message: "description task: ",
-                    },
-                ])
-            console.log(await createTask(createData.title, createData.description));
-            main();
-            break;
+            {
+                const data = await inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            name: "title",
+                            message: "title task: ",
+                        },
+                        {
+                            type: "input",
+                            name: "description",
+                            message: "description task: ",
+                        },
+                    ])
+                console.log(await createTask(data.title, data.description));
+                main();
+                break;
+            }
 
         case choices.viewTasks:
-            console.log(await getTasks());
-            main();
-            break;
+            {
+                console.log(await getTasks());
+                main();
+                break;
+            }
 
         case choices.updateTask:
-            const updateData = await inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "id",
-                        message: "ID task: ",
-                    },
-                    {
-                        type: "input",
-                        name: "title",
-                        message: "new title task: ",
-                    },
-                    {
-                        type: "input",
-                        name: "description",
-                        message: "new description task: ",
-                    },
-                ])
-            console.log(await updateTask(updateData.id, updateData.title, updateData.description));
-            main();
-            break;
+            {
+                const data = await inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            name: "id",
+                            message: "ID task: ",
+                        },
+                        {
+                            type: "input",
+                            name: "title",
+                            message: "new title task: ",
+                        },
+                        {
+                            type: "input",
+                            name: "description",
+                            message: "new description task: ",
+                        },
+                    ])
+                console.log(await updateTask(data.id, data.title, data.description));
+                main();
+                break;
+            }
 
         case choices.deleteTask:
-            const deleteData = await inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "id",
-                        message: "ID task deleted: ",
-                    },
-                ])
-            console.log(await deleteTask(deleteData.id));
-            main();
-            break;
+            {
+                const data = await inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            name: "id",
+                            message: "ID task deleted: ",
+                        },
+                    ])
+                console.log(await deleteTask(data.id));
+                main();
+                break;
+            }
 
         case choices.markDone:
-            const markDoneData = await inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "id",
-                        message: "ID task done: ",
-                    },
-                ])
-            console.log(await markTaskAsDone(markDoneData.id));
-            main();
-            break;
+            {
+                const data = await inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            name: "id",
+                            message: "ID task done: ",
+                        },
+                    ])
+                console.log(await markTaskAsDone(data.id));
+                main();
+                break;
+            }
 
         case choices.markNotDone:
-            const markNotDoneData = await inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "id",
-                        message: "ID task not done: ",
-                    },
-                ])
-            console.log(await markTaskAsNotDone(markNotDoneData.id));
-            main();
-            break;
+            {
+                const data = await inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            name: "id",
+                            message: "ID task not done: ",
+                        },
+                    ])
+                console.log(await markTaskAsNotDone(data.id));
+                main();
+                break;
+            }
 
         case choices.exit:
             break;
