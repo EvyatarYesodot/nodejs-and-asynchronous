@@ -10,13 +10,6 @@ const createTask = async (title, description) => {
         status: "not done",
     };
     const tasks = await loadTasks();
-
-    if (!Array.isArray(tasks)) {
-        const arrTasks = [tasks];
-        arrTasks.push(newTask);
-        await saveTasks(arrTasks);
-        return;
-    }
     tasks.push(newTask);
     await saveTasks(tasks);
     return "Task created"
