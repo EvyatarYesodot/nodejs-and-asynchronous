@@ -31,7 +31,7 @@ const getTask = async (id) => {
 
 const updateTask = async (id, title, description) => {
     const tasks = await loadTasks();
-    const index = await indexTask(id);
+    const index = indexTask(id, tasks);
     if (index === undefined) {
         return "Task not found";
     }
@@ -43,7 +43,7 @@ const updateTask = async (id, title, description) => {
 
 const deleteTask = async (id) => {
     const tasks = await loadTasks();
-    const index = await indexTask(id);
+    const index = indexTask(id, tasks);
     if (index === undefined) {
         return "Task not found";
     }
@@ -54,7 +54,7 @@ const deleteTask = async (id) => {
 
 const markTaskAsDone = async (id) => {
     const tasks = await loadTasks();
-    const index = await indexTask(id);
+    const index = indexTask(id, tasks);
     if (index === undefined) {
         return "Task not found";
     }
@@ -65,7 +65,7 @@ const markTaskAsDone = async (id) => {
 
 const markTaskAsNotDone = async (id) => {
     const tasks = await loadTasks();
-    const index = await indexTask(id);
+    const index = indexTask(id, tasks);
     if (index === undefined) {
         return "Task not found";
     }
