@@ -1,29 +1,72 @@
+import { v4 as uuidv4 } from "uuid";
+import { loadTasks, saveTasks } from "./storage.js";
+import { indexTask } from "./utils.js";
+
 const createTask = (title, description) => {
-    // Generates a new task with provided title and description.
+    const newTask = {
+        uniqueID: uuidv4(),
+        title,
+        description,
+        status: "not done",
+    };
+    const tasks = loadTasks();
+    tasks.push(newTask);
+    saveTasks(tasks);
 };
 
 const getTasks = () => {
-    // Retrieves an array of all tasks.
+    return loadTasks();
 };
 
 const getTask = (id) => {
-    // Fetches a specific task using its ID.
+    const tasks = loadTasks();
+    const task = tasks.find((task) => task.uniqueID === id);
+    if (!task) {
+        console.log(`ID: '${id}' not found`);
+        return;
+    }
+    return task;
 };
 
 const updateTask = (id, title, description) => {
-    // Modifies title and description of a specified task.
+    const tasks = loadTasks();
+    const index = indexTask(id, tasks);
+    if (index === undefined) {
+        return;
+    }
+    tasks[index].title = title;
+    tasks[index].description = description;
+    saveTasks(tasks);
 };
 
 const deleteTask = (id) => {
-    // Removes the identified task.
+    const tasks = loadTasks();
+    const index = indexTask(id, tasks);
+    if (index === undefined) {
+        return;
+    }
+    tasks.splice(index, 1);
+    saveTasks(tasks);
 };
 
 const markTaskAsDone = (id) => {
-    // Flags a task as done.
+    const tasks = loadTasks();
+    const index = indexTask(id, tasks);
+    if (index === undefined) {
+        return;
+    }
+    tasks[index].status = "done";
+    saveTasks(tasks);
 };
 
 const markTaskAsNotDone = (id) => {
-    // Reverts a task's status to not done.
+    const tasks = loadTasks();
+    const index = indexTask(id, tasks);
+    if (index === undefined) {
+        return;
+    }
+    tasks[index].status = "not done";
+    saveTasks(tasks);
 };
 
 export { createTask, deleteTask, getTask, getTasks, markTaskAsDone, markTaskAsNotDone, updateTask };
